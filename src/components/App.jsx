@@ -14,19 +14,13 @@ import { Notification } from './Notification/Notification';
 
 export const App = () => {
   const contacts = useSelector(selectContacts);
-
   const loading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
-
-    return () => {
-      const array = dispatch(fetchContacts());
-      console.log(array);
-    };
-  }, [dispatch, contacts]);
+  }, [dispatch]);
 
   return (
     <div
@@ -43,14 +37,13 @@ export const App = () => {
       <ContactForm />
       <h2>Contacts</h2>
       {loading && !error && <Loader />}
-
       {contacts.length ? (
         <>
           <Filter />
           <ContactList />
         </>
       ) : (
-        <Notification message="There is no contacts" />
+        <Notification message="There are no contacts" />
       )}
     </div>
   );
