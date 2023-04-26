@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { selectContacts } from '../../redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from '../../redux/operations';
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(selectContacts);
+
   const dispatch = useDispatch();
 
   const handleInputChange = event => {
@@ -28,7 +29,6 @@ export const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
     const isOnContacts = contacts.find(item => {
       return item.name.toLowerCase() === name.toLowerCase();
     });
