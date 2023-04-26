@@ -26,7 +26,7 @@ export const App = () => {
       const array = dispatch(fetchContacts());
       console.log(array);
     };
-  }, [dispatch]);
+  }, [dispatch, contacts]);
 
   return (
     <div
