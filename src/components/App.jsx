@@ -37,6 +37,7 @@ export const App = () => {
       <ContactForm />
       <h2>Contacts</h2>
       {loading && !error && <Loader />}
+
       {contacts.length ? (
         <>
           <Filter />
